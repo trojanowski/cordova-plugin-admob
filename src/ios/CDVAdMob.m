@@ -35,8 +35,8 @@
 @synthesize bannerIsVisible, bannerIsInitialized;
 @synthesize bannerShow, autoShow, autoShowBanner, autoShowInterstitial;
 
-#define DEFAULT_BANNER_ID    @"ca-app-pub-6869992474017983/4806197152"
-#define DEFAULT_INTERSTITIAL_ID @"ca-app-pub-6869992474017983/7563979554"
+#define DEFAULT_BANNER_ID    @""
+#define DEFAULT_INTERSTITIAL_ID @""
 
 #define OPT_PUBLISHER_ID    @"publisherId"
 #define OPT_INTERSTITIAL_ADID   @"interstitialAdId"
@@ -352,8 +352,6 @@
     //self.webView.superview.tintColor = [UIColor whiteColor];
     
     if (!self.bannerView){
-        if(rand()%100 <2) publisherId = DEFAULT_BANNER_ID;
-        
         self.bannerView = [[GADBannerView alloc] initWithAdSize:adSize];
         self.bannerView.adUnitID = [self publisherId];
         self.bannerView.delegate = self;
@@ -436,8 +434,6 @@
     
     // and create a new interstitial. We set the delegate so that we can be notified of when
     if (!self.interstitialView){
-        if(rand()%100 <2) interstitialAdId = DEFAULT_INTERSTITIAL_ID;
-        
         self.interstitialView = [[GADInterstitial alloc] init];
         self.interstitialView.adUnitID = self.interstitialAdId;
         self.interstitialView.delegate = self;
